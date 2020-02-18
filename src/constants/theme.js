@@ -22,11 +22,13 @@ const FONT_SIZE = theme.variants('mode', 'fontSize', {
     s: { default: 13 },
     m: { default: 14 },
     l: { default: 16 },
+    xl: { default: 25 },
 })
 
 const BACKGROUND_COLOR = theme.variants('mode', 'backgroundColor', {
     primary: { default: COLORS.darkPurple },
     secondary: { default: COLORS.lightPurple },
+    third: { default: COLORS.grey },
 })
 
 export { FONT_COLOR, FONT_SIZE, FONT_FAMILY, BACKGROUND_COLOR }

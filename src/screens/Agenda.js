@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Text from '../components/Text'
 import Title from '../components/Title'
 import Container from '../components/Container'
+import Filter from '../components/Filter'
 
 const ListItemWrapper = styled.div`
     display: flex;
@@ -17,9 +18,11 @@ const events = [
         id: 0,
         date: '12/12/2020',
         hour: '12:00',
-        artist: 'aer',
-        description: 'aer c cool',
+        artist: 'Beatles',
+        description: 'WOW',
+        lieu: 'scene rock',
         imageUrl: 'https://icdjbv',
+        type: `Meet'em`,
     },
     {
         id: 1,
@@ -27,11 +30,13 @@ const events = [
         hour: '12:00',
         artist: 'aer',
         description: 'aer c cool',
+        lieu: 'scène techno',
         imageUrl: 'https://icdjbv',
+        type: `Concert`,
     },
 ]
 
-const ListItem = ({ date, hour, artist, description, imageUrl }) => (
+const ListItem = ({ date, hour, artist, lieu, imageUrl, type }) => (
     <ListItemWrapper>
         <div
             style={{
@@ -43,6 +48,7 @@ const ListItem = ({ date, hour, artist, description, imageUrl }) => (
         >
             <div>{date}</div>
             <div>{hour}</div>
+            <p>{type}</p>
         </div>
         <div
             style={{
@@ -55,7 +61,7 @@ const ListItem = ({ date, hour, artist, description, imageUrl }) => (
             }}
         >
             <div>{artist}</div>
-            <div>{description}</div>
+            <div>{lieu}</div>
         </div>
         <div style={{ flex: 1 }}>
             {imageUrl}
@@ -68,7 +74,19 @@ class Agenda extends Component {
     render() {
         return (
             <Container>
-                <Title backgroundColor="primary">Programme</Title>
+                <Title backgroundColor="primary">Programmation</Title>
+                <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        flex: '1 1',
+                        justifyContent: 'space-around',
+                    }}
+                >
+                    <Filter backgroundColor="secondary">Lieu</Filter>
+                    <Filter backgroundColor="secondary">Horaire</Filter>
+                    <Filter backgroundColor="secondary">Type</Filter>
+                </div>
                 {events.map(({ id, ...props }) => (
                     <ListItem key={id} {...props} />
                 ))}
