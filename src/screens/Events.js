@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+
 import Text from '../components/Text'
 import Title from '../components/Title'
 import Container from '../components/Container'
 import Filter from '../components/Filter'
+
+import { Event } from '.'
 
 const ListItemWrapper = styled.div`
     display: flex;
@@ -70,7 +74,7 @@ const ListItem = ({ date, hour, artist, lieu, imageUrl, type }) => (
     </ListItemWrapper>
 )
 // je suis teubé
-class Agenda extends Component {
+class Events extends Component {
     render() {
         return (
             <Container>
@@ -90,9 +94,11 @@ class Agenda extends Component {
                 {events.map(({ id, ...props }) => (
                     <ListItem key={id} {...props} />
                 ))}
+
+                <Link to="/event/1">event_detail</Link>
             </Container>
         )
     }
 }
 
-export default Agenda
+export default Events
