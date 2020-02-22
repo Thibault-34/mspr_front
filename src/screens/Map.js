@@ -17,7 +17,7 @@ export default class SimpleExample extends React.Component {
             <Map
                 center={position}
                 zoom={this.state.zoom}
-                style={{ height: '100vh' }}
+                style={{ height: '100vh', zIndex: 0 }}
             >
                 <TileLayer
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
