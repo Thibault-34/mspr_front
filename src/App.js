@@ -2,7 +2,7 @@ import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 
-import { Home, About, Agenda, Ticket, Artist, News } from './screens'
+import { Home, Map, Agenda, Ticket, Artists, News } from './screens'
 import Menu from './components/Menu'
 
 const App = () => {
@@ -10,8 +10,8 @@ const App = () => {
         <ThemeProvider theme={{ mode: 'default' }}>
             <Menu />
             <Switch>
-                <Route path="/about">
-                    <About />
+                <Route path="/map">
+                    <Map />
                 </Route>
                 <Route path="/news">
                     <News />
@@ -23,7 +23,7 @@ const App = () => {
                     <Ticket />
                 </Route>
                 <Route path="/artist">
-                    <Artist />
+                    <Artists />
                 </Route>
                 <Route path="/">
                     <Home />
