@@ -65,7 +65,7 @@ const ListItem = ({ name, style, imageUrl }) => (
     </ListItemWrapper>
 )
 
-class Artist extends Component {
+class Artists extends Component {
     render() {
         return (
             <Container>
@@ -79,4 +79,4 @@ class Artist extends Component {
     }
 }
 
-export default Artist
+export default Artists
