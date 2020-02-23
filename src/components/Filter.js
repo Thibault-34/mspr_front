@@ -1,8 +1,9 @@
+import React from 'react'
 import styled from 'styled-components'
 import Text from '../components/Text'
 import { BACKGROUND_COLOR } from '../constants/theme'
 
-const Filter = styled(Text)`
+const FilterText = styled(Text)`
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -12,7 +13,12 @@ const Filter = styled(Text)`
     margin: 0 5px;
     margin-bottom: 10px;
 `
-Filter.defaultProps = {
+
+const Filter = ({ children }) => {
+    return <FilterText backgroundColor="secondary">{children}</FilterText>
+}
+
+FilterText.defaultProps = {
     fontColor: 'secondary',
     textTransform: 'uppercase',
     fontWeight: 'bold',

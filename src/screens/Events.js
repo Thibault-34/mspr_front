@@ -22,9 +22,9 @@ const events = [
         hour: '12:00',
         artist: 'Beatles',
         description: 'WOW',
-        lieu: 'scene rock',
+        genre: 'rock',
         imageUrl: 'https://icdjbv',
-        type: `Meet'em`,
+        place: 'Montpellier Bar',
     },
     {
         id: 1,
@@ -32,13 +32,13 @@ const events = [
         hour: '12:00',
         artist: 'aer',
         description: 'aer c cool',
-        lieu: 'scène techno',
+        genre: 'techno',
         imageUrl: 'https://icdjbv',
-        type: `Concert`,
+        place: 'Montpellier Arena',
     },
 ]
 
-const ListItem = ({ date, hour, artist, lieu, imageUrl, type, id }) => (
+const ListItem = ({ date, hour, artist, genre, place, id }) => (
     <ListItemWrapper to={`event/${id}`}>
         <div
             style={{
@@ -50,11 +50,10 @@ const ListItem = ({ date, hour, artist, lieu, imageUrl, type, id }) => (
         >
             <div>{date}</div>
             <div>{hour}</div>
-            <p>{type}</p>
         </div>
         <div
             style={{
-                flex: 2,
+                flex: 1,
                 background: 'red',
                 padding: '0 5px',
                 display: 'flex',
@@ -63,16 +62,43 @@ const ListItem = ({ date, hour, artist, lieu, imageUrl, type, id }) => (
             }}
         >
             <div>{artist}</div>
-            <div>{lieu}</div>
+            <div>{genre}</div>
         </div>
-        <div style={{ flex: 1 }}>
-            {imageUrl}
-            <img></img>
-        </div>
+        <div style={{ flex: 1 }}>{place}</div>
     </ListItemWrapper>
 )
+
+class EventsList extends Component {
+    state = { filter: { by: 'date', compare: (a, b) => a - b } }
+
+    _setFilter = ({ filter }) => {
+        console.log(filter)
+    }
+
+    render() {
+        return (
+            <>
+                <div style={{ display: 'flex' }}>
+                    <Filter by="date" onToggle={this._setFilter}>
+                        Date
+                    </Filter>
+                    <Filter by="genre" onToggle={this._setFilter}>
+                        Genre
+                    </Filter>
+                    <Filter by="place" onToggle={this._setFilter}>
+                        Lieu
+                    </Filter>
+                </div>
+                {events.map(({ id, ...props }) => (
+                    <ListItem key={id} id={id} {...props} />
+                ))}
+            </>
+        )
+    }
+}
+
 // je suis teubé
-class Agenda extends Component {
+class Events extends Component {
     render() {
         return (
             <Container>
@@ -84,19 +110,11 @@ class Agenda extends Component {
                         flex: '1 1',
                         justifyContent: 'space-around',
                     }}
-                >
-                    <Filter backgroundColor="secondary">Lieu</Filter>
-                    <Filter backgroundColor="secondary">Horaire</Filter>
-                    <Filter backgroundColor="secondary">Type</Filter>
-                </div>
-                {events.map(({ id, ...props }) => (
-                    <ListItem key={id} id={id} {...props} />
-                ))}
-
-                <Link to="/event/1">event_detail</Link>
+                ></div>
+                <EventsList />
             </Container>
         )
     }
 }
 
-export default Agenda
+export default Events
