@@ -1,8 +1,17 @@
 const fetchData = () => {
-    const URL = 'https://jsonplaceholder.typicode.com/users'
-    return fetch(URL, { method: 'GET' }).then(response =>
-        Promise.all([response, response.json()])
-    )
+    return fetch(
+        'https://api-euwest.graphcms.com/v1/ck6qlqene8to301dh92tbhobs/master',
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                query: 'query{ pushes { id content url } }',
+            }),
+            mode: 'cors',
+        }
+    ).then(response => Promise.all([response, response.json()]))
 }
 
 export { fetchData }

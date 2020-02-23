@@ -31,7 +31,7 @@ export const fetchDataWithRedux = () => {
         // preocess to download
         return fetchData().then(([response, json]) => {
             if (response.status === 200) {
-                dispatch(fetchDataSuccess(json))
+                dispatch(fetchDataSuccess(json.data))
             } else {
                 dispatch(fetchDataError())
             }

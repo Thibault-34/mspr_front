@@ -1,11 +1,15 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
+import { connect } from 'react-redux'
 
 import { Home, Map, Events, Ticket, Artists, News, Event } from './screens'
 import Burger from './components/Burger'
+import Text from './components/Text'
 import { Link, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
+
+import { fetchDataWithRedux } from './redux/actions'
 
 const Nav = styled.nav`
     width: 100%;
@@ -31,6 +35,12 @@ const MenuLink = styled(Link)`
 class App extends React.Component {
     state = {
         isNavDisplayed: false,
+        isPushDisplayed: true,
+    }
+
+    componentDidMount = () => {
+        const { fetchDataWithRedux } = this.props
+        fetchDataWithRedux()
     }
 
     _toggleNav = () => {
@@ -40,9 +50,15 @@ class App extends React.Component {
     }
 
     render() {
-        const { isNavDisplayed } = this.state
+        const { isNavDisplayed, isPushDisplayed } = this.state
+        const { push } = this.props
         return (
             <ThemeProvider theme={{ mode: 'default' }}>
+                {push && isPushDisplayed && (
+                    <div onClick={() => {}}>
+                        <Text>{push}</Text>
+                    </div>
+                )}
                 <Burger onToggle={this._toggleNav} />
 
                 {isNavDisplayed && (
@@ -70,4 +86,18 @@ class App extends React.Component {
     }
 }
 
-export default App
+const mapStateToProps = state => {
+    const { pushes } = state.data
+    const push = pushes && pushes[0] && pushes[0].content
+    return {
+        push: push,
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchDataWithRedux: () => dispatch(fetchDataWithRedux()),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

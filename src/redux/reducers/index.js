@@ -2,7 +2,7 @@ import { combineReducers } from 'redux'
 import { FETCH_SUCCESS } from '../actions'
 
 // store mirrored data from wemap api to reflect state of the app
-export const events = (state = [], action) => {
+export const data = (state = [], action) => {
     switch (action.type) {
         case FETCH_SUCCESS:
             return action.data
@@ -13,5 +13,5 @@ export const events = (state = [], action) => {
 }
 
 export default combineReducers({
-    events,
+    data,
 })
