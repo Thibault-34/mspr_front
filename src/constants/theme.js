@@ -7,6 +7,7 @@ const COLORS = {
     lightPurple: '#C717F1',
     yellow: '#FFCF37',
     white: '#fff',
+    red: 'red',
 }
 
 const FONT_FAMILY = theme.variants('mode', 'fontFamily', {
@@ -31,6 +32,7 @@ const BACKGROUND_COLOR = theme.variants('mode', 'backgroundColor', {
     secondary: { default: COLORS.lightPurple },
     third: { default: COLORS.grey },
     fourth: { default: COLORS.yellow },
+    fifth: { default: COLORS.red },
 })
 
 export { FONT_COLOR, FONT_SIZE, FONT_FAMILY, BACKGROUND_COLOR }

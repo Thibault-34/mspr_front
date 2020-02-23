@@ -1,7 +1,8 @@
 import React from 'react'
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
+import { connect } from 'react-redux'
 
-export default class SimpleExample extends React.Component {
+class CustomMap extends React.Component {
     constructor() {
         super()
         this.state = {
@@ -34,3 +35,12 @@ export default class SimpleExample extends React.Component {
         )
     }
 }
+
+const mapStateToProps = state => {
+    console.log(state && state.data && state.data.faqs)
+    return {
+        state,
+    }
+}
+
+export default connect(mapStateToProps)(CustomMap)

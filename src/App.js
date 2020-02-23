@@ -8,6 +8,7 @@ import Burger from './components/Burger'
 import Text from './components/Text'
 import { Link, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
+import { BACKGROUND_COLOR } from './constants/theme'
 
 import { fetchDataWithRedux } from './redux/actions'
 
@@ -30,6 +31,10 @@ const MenuLink = styled(Link)`
     font-weight: bold;
     text-decoration: ${({ to }) =>
         to === useLocation().pathname ? 'underline' : 'none'};
+`
+
+const Push = styled.div`
+    background-color: ${BACKGROUND_COLOR};
 `
 
 class App extends React.Component {
@@ -55,9 +60,23 @@ class App extends React.Component {
         return (
             <ThemeProvider theme={{ mode: 'default' }}>
                 {push && isPushDisplayed && (
-                    <div onClick={() => {}}>
-                        <Text>{push}</Text>
-                    </div>
+                    <Push backgroundColor="fifth">
+                        <Text
+                            onClick={() => {
+                                this.setState(({ isPushDisplayed }) => ({
+                                    isPushDisplayed: !isPushDisplayed,
+                                }))
+                            }}
+                            style={{ position: 'absolute', right: 10, top: 10 }}
+                            fontWeight="bold"
+                            fontColor="secondary"
+                        >
+                            X
+                        </Text>
+                        <Text style={{ padding: 15 }} fontColor="secondary">
+                            {push}
+                        </Text>
+                    </Push>
                 )}
                 <Burger onToggle={this._toggleNav} />
 
