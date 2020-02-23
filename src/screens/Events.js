@@ -22,9 +22,9 @@ const events = [
         hour: '12:00',
         artist: 'Beatles',
         description: 'WOW',
-        genre: 'rock',
+        genre: 'Concert',
         imageUrl: 'https://icdjbv',
-        place: 'Montpellier Bar',
+        place: 'Scene Sud',
     },
     {
         id: 1,
@@ -32,15 +32,15 @@ const events = [
         hour: '12:00',
         artist: 'aer',
         description: 'aer c cool',
-        genre: 'techno',
+        genre: 'Rencontre',
         imageUrl: 'https://icdjbv',
-        place: 'Montpellier Arena',
+        place: 'Scène Nord',
     },
 ]
 
 const ListItem = ({ date, hour, artist, genre, place, id }) => (
     <ListItemWrapper to={`event/${id}`}>
-        <div
+        <Text
             style={{
                 flex: 1,
                 display: 'flex',
@@ -48,10 +48,10 @@ const ListItem = ({ date, hour, artist, genre, place, id }) => (
                 alignItems: 'center',
             }}
         >
-            <div>{date}</div>
-            <div>{hour}</div>
-        </div>
-        <div
+            <Text>{date}</Text>
+            <Text>{hour}</Text>
+        </Text>
+        <Text
             style={{
                 flex: 1,
                 background: 'red',
@@ -61,10 +61,10 @@ const ListItem = ({ date, hour, artist, genre, place, id }) => (
                 alignItems: '',
             }}
         >
-            <div>{artist}</div>
-            <div>{genre}</div>
-        </div>
-        <div style={{ flex: 1 }}>{place}</div>
+            <Text>{artist}</Text>
+            <Text>{genre}</Text>
+        </Text>
+        <Text style={{ flex: 1 }}>{place}</Text>
     </ListItemWrapper>
 )
 
@@ -78,7 +78,7 @@ class EventsList extends Component {
     render() {
         return (
             <>
-                <div style={{ display: 'flex' }}>
+                <Text style={{ display: 'flex' }}>
                     <Filter by="date" onToggle={this._setFilter}>
                         Date
                     </Filter>
@@ -88,7 +88,7 @@ class EventsList extends Component {
                     <Filter by="place" onToggle={this._setFilter}>
                         Lieu
                     </Filter>
-                </div>
+                </Text>
                 {events.map(({ id, ...props }) => (
                     <ListItem key={id} id={id} {...props} />
                 ))}

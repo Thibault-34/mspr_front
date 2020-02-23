@@ -1,10 +1,10 @@
 import Home from './Home'
-import About from './About'
 import Events from './Events'
 import Ticket from './Ticket'
 import News from './News'
 import Artists from './Artists'
 import Map from './Map'
 import Event from './Event'
+import Infos from './Infos'
 
-export { Home, About, Events, Ticket, News, Artists, Map, Event }
+export { Home, Events, Ticket, News, Artists, Map, Event, Infos }

@@ -3,8 +3,9 @@ import theme from 'styled-theming'
 const COLORS = {
     dark: '#000',
     grey: '#D6D6D6',
-    darkPurple: '#6A0084',
+    darkPurple: '#A703B2',
     lightPurple: '#C717F1',
+    yellow: '#FFCF37',
     white: '#fff',
 }
 
@@ -29,6 +30,7 @@ const BACKGROUND_COLOR = theme.variants('mode', 'backgroundColor', {
     primary: { default: COLORS.darkPurple },
     secondary: { default: COLORS.lightPurple },
     third: { default: COLORS.grey },
+    fourth: { default: COLORS.yellow },
 })
 
 export { FONT_COLOR, FONT_SIZE, FONT_FAMILY, BACKGROUND_COLOR }
