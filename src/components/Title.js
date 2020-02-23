@@ -9,8 +9,10 @@ const Title = styled(Text)`
     background-color: ${BACKGROUND_COLOR};
     padding: 5px;
     margin-bottom: 10px;
+    text-align: center;
 `
 Title.defaultProps = {
+    backgroundColor: 'primary',
     fontColor: 'secondary',
     textTransform: 'uppercase',
     fontWeight: 'bold',

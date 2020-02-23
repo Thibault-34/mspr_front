@@ -8,28 +8,35 @@ import Cta from '../components/Cta'
 const BuyTicketsBanner = styled.div`
     display: flex;
     background: #a703b2;
-    height: 300px;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    color: white;
-    font-size: 1.5em;
+    height: 200px;
 `
 
 const Ticket = () => {
     return (
         <Container>
-            <Title backgroundColor="primary">BILLETERIE</Title>
+            <Title>BILLETERIE</Title>
             <BuyTicketsBanner>
-                <p>NATION SOUND</p>
-                <p>CA VA ETRE LE FEU</p>
+                <Text
+                    fontColor="secondary"
+                    fontSize="l"
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        flexDirection: 'column',
+                        width: '100%',
+                    }}
+                >
+                    <p>NATION SOUND</p>
+                    <p>CA VA ETRE LE FEU</p>
+                </Text>
             </BuyTicketsBanner>
-            <p>Du 6 au 10 Mars 2020</p>
-            <p>
+            <Text>Du 6 au 10 Mars 2020</Text>
+            <Text>
                 Viens t'éclater à NationSound le premier festival qui pète sa
                 mère
-            </p>
-            <p>En plus c'est pas cher. </p>
+            </Text>
+            <Text>En plus c'est pas cher. </Text>
             <div
                 style={{
                     display: 'flex',

@@ -6,6 +6,7 @@ import Text from '../components/Text'
 import Title from '../components/Title'
 import Container from '../components/Container'
 import Filter from '../components/Filter'
+import { connect } from 'react-redux'
 
 const ListItemWrapper = styled(Link)`
     display: flex;
@@ -15,58 +16,36 @@ const ListItemWrapper = styled(Link)`
     margin-bottom: 5px;
 `
 
-const events = [
-    {
-        id: 0,
-        date: '12/12/2020',
-        hour: '12:00',
-        artist: 'Beatles',
-        description: 'WOW',
-        genre: 'Concert',
-        imageUrl: 'https://icdjbv',
-        place: 'Scene Sud',
-    },
-    {
-        id: 1,
-        date: '12/12/2020',
-        hour: '12:00',
-        artist: 'aer',
-        description: 'aer c cool',
-        genre: 'Rencontre',
-        imageUrl: 'https://icdjbv',
-        place: 'Scène Nord',
-    },
-]
-
-const ListItem = ({ date, hour, artist, genre, place, id }) => (
-    <ListItemWrapper to={`event/${id}`}>
-        <Text
-            style={{
-                flex: 1,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-            }}
-        >
-            <Text>{date}</Text>
-            <Text>{hour}</Text>
-        </Text>
-        <Text
-            style={{
-                flex: 1,
-                background: 'red',
-                padding: '0 5px',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: '',
-            }}
-        >
-            <Text>{artist}</Text>
-            <Text>{genre}</Text>
-        </Text>
-        <Text style={{ flex: 1 }}>{place}</Text>
-    </ListItemWrapper>
-)
+const ListItem = ({ date, artist, type, place, id }) => {
+    return (
+        <ListItemWrapper to={`event/${id}`}>
+            <Text
+                style={{
+                    flex: 1,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                }}
+            >
+                <Text>{date}</Text>
+            </Text>
+            <Text
+                style={{
+                    flex: 1,
+                    background: 'red',
+                    padding: '0 5px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: '',
+                }}
+            >
+                <Text>{artist.name}</Text>
+                <Text>{type}</Text>
+            </Text>
+            <Text style={{ flex: 1 }}>{place.name}</Text>
+        </ListItemWrapper>
+    )
+}
 
 class EventsList extends Component {
     state = { filter: { by: 'date', compare: (a, b) => a - b } }
@@ -89,9 +68,10 @@ class EventsList extends Component {
                         Lieu
                     </Filter>
                 </Text>
-                {events.map(({ id, ...props }) => (
-                    <ListItem key={id} id={id} {...props} />
-                ))}
+                {this.props.data &&
+                    this.props.data.map(({ id, ...props }) => (
+                        <ListItem key={id} {...props} />
+                    ))}
             </>
         )
     }
@@ -111,10 +91,19 @@ class Events extends Component {
                         justifyContent: 'space-around',
                     }}
                 ></div>
-                <EventsList />
+                <EventsList data={this.props.events}></EventsList>
             </Container>
         )
     }
 }
 
-export default Events
+const mapStateToProps = state => {
+    console.log(state.data.events)
+    const events = state && state.data && state.data.events
+    console.log(events)
+    return {
+        events: events,
+    }
+}
+
+export default connect(mapStateToProps)(Events)

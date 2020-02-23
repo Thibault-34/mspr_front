@@ -3,7 +3,18 @@ import { Switch, Route } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { connect } from 'react-redux'
 
-import { Home, Map, Events, Ticket, Artists, News, Event } from './screens'
+import {
+    Home,
+    Map,
+    Events,
+    Ticket,
+    Artists,
+    News,
+    Event,
+    FAQ,
+    Sponsors,
+    Infos,
+} from './screens'
 import Burger from './components/Burger'
 import Text from './components/Text'
 import { Link, useLocation } from 'react-router-dom'
@@ -88,6 +99,9 @@ class App extends React.Component {
                         <MenuLink to="/events">Events</MenuLink>
                         <MenuLink to="/ticket">Ticket</MenuLink>
                         <MenuLink to="/artists">Artists</MenuLink>
+                        <MenuLink to="/faq">FAQ</MenuLink>
+                        <MenuLink to="/sponsors">Partenaires</MenuLink>
+                        <MenuLink to="/infos">Informations générales</MenuLink>
                     </Nav>
                 )}
 
@@ -98,6 +112,9 @@ class App extends React.Component {
                     <Route path="/event/:id" component={Event} />
                     <Route path="/ticket" component={Ticket} />
                     <Route path="/artists" component={Artists} />
+                    <Route path="/faq" component={FAQ} />
+                    <Route path="/sponsors" component={Sponsors} />
+                    <Route path="/infos" component={Infos} />
                     <Route path="/" component={Home} />
                 </Switch>
             </ThemeProvider>

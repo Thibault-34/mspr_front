@@ -13,8 +13,8 @@ const Text = styled.div`
 `
 
 Text.propTypes = {
-    fontSize: PropTypes.oneOf(['s', 'm', 'l']),
-    fontColor: PropTypes.oneOf(['primary', 'secondary', 'third']),
+    fontSize: PropTypes.oneOf(['s', 'm', 'l', 'xl']),
+    fontColor: PropTypes.oneOf(['primary', 'secondary', 'third', 'fourth']),
 }
 
 Text.defaultProps = {

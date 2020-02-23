@@ -3,28 +3,8 @@ import styled from 'styled-components'
 import Title from '../components/Title'
 import Container from '../components/Container'
 import Text from '../components/Text'
-
-const sponsors = [
-    {
-        id: 0,
-        name: 'Crédit Agricole',
-        description: 'Lorem Ipsum',
-        url: 'credit-agricole.fr',
-        image: {
-            fileName: 'credit-agricole.png',
-        },
-    },
-    {
-        id: 1,
-        name: 'NRJ',
-        description:
-            'La radio des vrais bonhommes La radio des vrais bonhommes, La radio des vrais bonhommes. La radio des vrais bonhommesLa radio des vrais bonhommesLa radio des vrais bonhommesLa radio des vrais bonhommes, La radio des vrais bonhommes    ',
-        url: 'nrj.fr',
-        image: {
-            fileName: 'nrj.png',
-        },
-    },
-]
+import Image from '../components/Image'
+import { connect } from 'react-redux'
 
 const ListItemWrapper = styled.a`
     display: flex;
@@ -36,36 +16,56 @@ const ListItemWrapper = styled.a`
     color: black;
 `
 
-const ListItem = ({ id, name, description, url, image }) => (
-    <ListItemWrapper href={url}>
-        <div style={{ flex: 1 }}>
-            <p>image ici</p>
-        </div>
-        <Text
-            style={{
-                flex: 2,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-start',
-            }}
-        >
-            <Text>{name}</Text>
-            <Text fontSize="s" fontColor="fourth">
-                {description}
+const ListItem = ({ id, name, description, url, image }) => {
+    const filename = image && image.fileName
+    const imageSrc = require(`../assets/images/sponsors/${filename}`)
+    return (
+        <ListItemWrapper href={url}>
+            <div
+                style={{
+                    flex: 1,
+                    height: '50px',
+                    overflow: 'hidden',
+                }}
+            >
+                <Image src={imageSrc} type="small"></Image>
+            </div>
+            <Text
+                style={{
+                    flex: 2,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'flex-start',
+                }}
+            >
+                <Text>{name}</Text>
+                <Text fontSize="s" fontColor="fourth">
+                    {description}
+                </Text>
             </Text>
-        </Text>
-    </ListItemWrapper>
-)
+        </ListItemWrapper>
+    )
+}
 
-const Sponsors = () => {
+const Sponsors = ({ sponsors }) => {
     return (
         <Container>
             <Title>Nos partenaires</Title>
-            {sponsors.map(({ id, ...props }) => (
-                <ListItem key={id} {...props} />
-            ))}
+            {sponsors &&
+                sponsors.map(({ id, ...props }) => (
+                    <ListItem key={id} {...props} />
+                ))}
         </Container>
     )
 }
 
-export default Sponsors
+const mapStateToProps = state => {
+    console.log(state.data.sponsors)
+    const sponsors = state && state.data && state.data.sponsors
+    console.log(sponsors)
+    return {
+        sponsors: sponsors,
+    }
+}
+
+export default connect(mapStateToProps)(Sponsors)

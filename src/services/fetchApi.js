@@ -17,6 +17,7 @@ const fetchData = () => {
                         }
                         place {
                         id
+                        name
                         }
                         type
                     }

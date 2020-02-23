@@ -7,6 +7,7 @@ const Cta = styled.a`
     text-decoration: none;
     font-size: 1.2em;
     font-weight: 500;
+    margin: 10px auto;
 `
 
 export default Cta

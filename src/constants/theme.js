@@ -3,6 +3,7 @@ import theme from 'styled-theming'
 const COLORS = {
     dark: '#000',
     grey: '#D6D6D6',
+    darkgrey: 'grey',
     darkPurple: '#A703B2',
     lightPurple: '#C717F1',
     yellow: '#FFCF37',
@@ -18,6 +19,7 @@ const FONT_COLOR = theme.variants('mode', 'fontColor', {
     primary: { default: COLORS.dark },
     secondary: { default: COLORS.white },
     third: { default: COLORS.grey },
+    fourth: { default: COLORS.darkgrey },
 })
 
 const FONT_SIZE = theme.variants('mode', 'fontSize', {
