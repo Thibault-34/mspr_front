@@ -137,14 +137,13 @@ class App extends React.Component {
                 <Switch>
                     <Route path="/map" component={Map} />
                     <Route path="/news" component={News} />
-                    <Route path="/events" component={Events} />
                     <Route path="/event/:id" component={Event} />
                     <Route path="/ticket" component={Ticket} />
                     <Route path="/artists" component={Artists} />
                     <Route path="/faq" component={FAQ} />
                     <Route path="/sponsors" component={Sponsors} />
                     <Route path="/infos" component={Infos} />
-                    <Route path="/" component={Home} />
+                    <Route path="/" component={Events} />
                 </Switch>
             </ThemeProvider>
         )
