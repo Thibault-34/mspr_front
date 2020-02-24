@@ -17,6 +17,14 @@ const ListItemWrapper = styled(Link)`
 `
 
 const ListItem = ({ date, artist, type, place, id }) => {
+    date = new Date(Date.parse(date))
+    const mm = date.getDate()
+    const dd = date.getMonth()
+    const yyyy = date.getFullYear()
+
+    const hours = date.getHours()
+    const minutes = date.getMinutes()
+
     return (
         <ListItemWrapper to={`event/${id}`}>
             <Text
@@ -27,12 +35,13 @@ const ListItem = ({ date, artist, type, place, id }) => {
                     alignItems: 'center',
                 }}
             >
-                <Text>{date}</Text>
+                <Text>{`${dd}/${mm}/${yyyy}`}</Text>
+                <Text>{`${hours}:${minutes}`}</Text>
             </Text>
             <Text
                 style={{
                     flex: 1,
-                    background: 'red',
+                    background: 'lightGrey',
                     padding: '0 5px',
                     display: 'flex',
                     flexDirection: 'column',
@@ -51,7 +60,7 @@ class EventsList extends Component {
     state = { filter: { by: 'date', compare: (a, b) => a - b } }
 
     _setFilter = ({ filter }) => {
-        console.log(filter)
+        // console.log(filter)
     }
 
     render() {
@@ -70,7 +79,7 @@ class EventsList extends Component {
                 </Text>
                 {this.props.data &&
                     this.props.data.map(({ id, ...props }) => (
-                        <ListItem key={id} {...props} />
+                        <ListItem key={id} id={id} {...props} />
                     ))}
             </>
         )
@@ -98,9 +107,7 @@ class Events extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state.data.events)
     const events = state && state.data && state.data.events
-    console.log(events)
     return {
         events: events,
     }

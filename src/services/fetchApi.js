@@ -11,9 +11,14 @@ const fetchData = () => {
                     events {
                         id
                         date
+                        name
                         artist {
                         id
                         name
+                        description
+                        image {
+                        fileName
+                        }
                         }
                         place {
                         id

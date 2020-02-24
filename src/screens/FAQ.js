@@ -39,7 +39,6 @@ const ListItem = ({ id, categoryFaq, question, answer }) => {
 }
 
 const FAQ = ({ faqs }) => {
-    console.log(faqs)
     return (
         <Container>
             <Title>FAQ</Title>
@@ -53,8 +52,6 @@ const FAQ = ({ faqs }) => {
 
 // requete redux
 const mapStateToProps = state => {
-    //const faqs = state.data && state.data.faqs
-    console.log(state && state.data && state.data.faqs)
     return {
         faqs: state && state.data && state.data.faqs,
     }

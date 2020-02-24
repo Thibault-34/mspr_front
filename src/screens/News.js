@@ -56,9 +56,7 @@ const News = ({ articles }) => {
 }
 
 const mapStateToProps = state => {
-    console.log(state.data.events)
     const articles = state && state.data && state.data.articles
-    console.log(articles)
     return {
         articles: articles,
     }

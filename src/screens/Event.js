@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import Text from '../components/Text'
 import Title from '../components/Title'
 import Container from '../components/Container'
@@ -18,26 +19,20 @@ const event = {
 }
 
 const Event = ({ match, data }) => {
-    const { id } = match.params
-    const {
-        date,
-        hour,
-        artist,
-        genre,
-        place,
-        name,
-        description,
-        filename,
-    } = event
-    const imageSrc = require(`../assets/images/artists/${filename}`)
+    const type = data?.type
+    const place = data?.place?.name
+    const description = data?.artist?.description
+    const name = data?.name
+    const filename = data?.artist?.image?.fileName
+
+    const imageSrc = filename && require(`../assets/images/artists/${filename}`)
     return (
         <div>
-            <div>Event {id}</div>
             <Container>
                 <Title>{name}</Title>
                 <Image src={imageSrc} type="large"></Image>
                 <div>
-                    <Text>{genre}</Text>
+                    <Text>{type}</Text>
                     <Text>{place}</Text>
                 </div>
                 <Text>{description}</Text>
@@ -46,4 +41,13 @@ const Event = ({ match, data }) => {
     )
 }
 
-export default Event
+const mapStateToProps = (state, props) => {
+    const events = state && state.data && state.data.events
+    const event =
+        events && events.find(({ id }) => id === props.match.params.id)
+    return {
+        data: event,
+    }
+}
+
+export default connect(mapStateToProps)(Event)

@@ -13,7 +13,6 @@ class CustomMap extends React.Component {
     }
 
     render() {
-        console.log(this.props.places)
         const position = [this.state.lat, this.state.lng]
         return (
             <Map
@@ -51,7 +50,6 @@ class CustomMap extends React.Component {
 }
 
 const mapStateToProps = state => {
-    //console.log(state && state.data && state.data.places)
     const places = state && state.data && state.data.places
     return {
         places: places,

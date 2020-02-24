@@ -69,9 +69,7 @@ const Sponsors = ({ sponsors }) => {
 }
 
 const mapStateToProps = state => {
-    console.log(state.data.sponsors)
     const sponsors = state && state.data && state.data.sponsors
-    console.log(sponsors)
     return {
         sponsors: sponsors,
     }
