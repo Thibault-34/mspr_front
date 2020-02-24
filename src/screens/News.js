@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Title from '../components/Title'
 import Container from '../components/Container'
 import Image from '../components/Image'
+import Text from '../components/Text'
 
 import { connect } from 'react-redux'
 
@@ -10,10 +11,13 @@ const ListItemWrapper = styled.a`
     display: flex;
     flex-direction: row;
     border: solid black 1px;
-    justify-content: flex-start;
+    justify-content: space-around;
     margin-bottom: 5px;
+    padding: 10px;
     text-decoration: none;
-    color: black;
+    background-color: lightgrey;
+    border: none;
+    color: ;
 `
 
 const ListItem = ({ id, title, description, url, image }) => {
@@ -21,16 +25,17 @@ const ListItem = ({ id, title, description, url, image }) => {
     const imageSrc = require(`../assets/images/articles/${filename}`)
     return (
         <ListItemWrapper href={url}>
-            <div
+            <Text
                 style={{
                     flex: 2,
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
+                    justifyContent: 'center',
                 }}
             >
                 <div>{title}</div>
-            </div>
+            </Text>
             <div
                 style={{
                     flex: 1,
