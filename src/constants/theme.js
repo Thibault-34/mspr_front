@@ -12,7 +12,7 @@ const COLORS = {
 }
 
 const FONT_FAMILY = theme.variants('mode', 'fontFamily', {
-    primary: { default: 'Helvetica' },
+    primary: { default: 'Oswald' },
 })
 
 const FONT_COLOR = theme.variants('mode', 'fontColor', {
