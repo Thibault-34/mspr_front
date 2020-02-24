@@ -4,10 +4,14 @@ import styled from 'styled-components'
 import Title from '../components/Title'
 import Container from '../components/Container'
 import Cta from '../components/Cta'
+import banner from '../assets/images/banner.jpg'
 
 const BuyTicketsBanner = styled.div`
     display: flex;
-    background: #a703b2;
+
+    background: url(${banner});
+    background-position: center;
+    background-size: cover;
     height: 200px;
 `
 
