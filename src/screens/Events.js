@@ -14,9 +14,13 @@ const ListItemWrapper = styled(Link)`
     border: solid black 1px;
     justify-content: space-around;
     margin-bottom: 5px;
+    padding: 10px;
+    text-decoration: none;
+    background-color: lightgrey;
+    border: none;
 `
 
-const ListItem = ({ date, artist, type, place, id }) => {
+const ListItem = ({ date, artist, type, place, id, name }) => {
     date = new Date(Date.parse(date))
     const mm = date.getDate()
     const dd = date.getMonth()
@@ -41,15 +45,12 @@ const ListItem = ({ date, artist, type, place, id }) => {
             <Text
                 style={{
                     flex: 1,
-                    background: 'lightGrey',
-                    padding: '0 5px',
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: '',
                 }}
             >
-                <Text>{artist.name}</Text>
-                <Text>{type}</Text>
+                <Text>{name}</Text>
             </Text>
             <Text style={{ flex: 1 }}>{place.name}</Text>
         </ListItemWrapper>

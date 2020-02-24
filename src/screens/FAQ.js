@@ -11,6 +11,10 @@ const ListItemWrapper = styled.div`
     border: solid black 1px;
     justify-content: space-around;
     margin-bottom: 5px;
+    padding: 10px;
+    text-decoration: none;
+
+    border: none;
 `
 
 const ListItem = ({ id, categoryFaq, question, answer }) => {
@@ -30,6 +34,7 @@ const ListItem = ({ id, categoryFaq, question, answer }) => {
                     flex: 1,
                     padding: '10px',
                     display: 'flex',
+                    backgroundColor: 'lightgrey',
                 }}
             >
                 <Text fontColor="fourth">{answer}</Text>

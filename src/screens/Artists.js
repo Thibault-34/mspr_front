@@ -13,6 +13,10 @@ const ListItemWrapper = styled.div`
     border: solid black 1px;
     justify-content: space-around;
     margin-bottom: 5px;
+    padding: 10px;
+    text-decoration: none;
+    background-color: lightgrey;
+    border: none;
 `
 
 const ListItem = ({ name, style, image }) => {
@@ -28,7 +32,7 @@ const ListItem = ({ name, style, image }) => {
                     alignItems: 'center',
                 }}
             >
-                <div>{name}</div>
+                <Text>{name}</Text>
             </div>
             <div
                 style={{
@@ -39,7 +43,7 @@ const ListItem = ({ name, style, image }) => {
                     alignItems: '',
                 }}
             >
-                <div>{style}</div>
+                <Text>{style}</Text>
             </div>
             <div
                 style={{

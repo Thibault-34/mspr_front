@@ -1,7 +1,7 @@
 import theme from 'styled-theming'
 
 const COLORS = {
-    dark: '#000',
+    dark: '#444444',
     grey: '#D6D6D6',
     darkgrey: 'grey',
     darkPurple: '#A703B2',
