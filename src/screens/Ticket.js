@@ -31,12 +31,19 @@ const Ticket = () => {
                     <p>CA VA ETRE LE FEU</p>
                 </Text>
             </BuyTicketsBanner>
-            <Text>Du 6 au 10 Mars 2020</Text>
-            <Text>
-                Viens t'éclater à NationSound le premier festival qui pète sa
-                mère
+            <Text
+                style={{
+                    textAlign: 'center',
+                    padding: '10px',
+                    lineHeight: '20px',
+                }}
+            >
+                Du 6 au 10 Mars 2020
+                <br />
+                Viens t'éclater à NationSound le premier festival qui déchire.
+                <br />
+                En plus c'est pas cher.{' '}
             </Text>
-            <Text>En plus c'est pas cher. </Text>
             <div
                 style={{
                     display: 'flex',

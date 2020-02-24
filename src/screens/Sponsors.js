@@ -10,10 +10,12 @@ const ListItemWrapper = styled.a`
     display: flex;
     flex-direction: row;
     border: solid black 1px;
-    justify-content: flex-start;
+    justify-content: space-around;
     margin-bottom: 5px;
+    padding: 10px;
     text-decoration: none;
-    color: black;
+    background-color: lightgrey;
+    border: none;
 `
 
 const ListItem = ({ id, name, description, url, image }) => {
@@ -45,6 +47,7 @@ const ListItem = ({ id, name, description, url, image }) => {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'flex-start',
+                    paddingLeft: '10px',
                 }}
             >
                 <Text>{name}</Text>
