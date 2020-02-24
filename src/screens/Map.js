@@ -8,11 +8,12 @@ class CustomMap extends React.Component {
         this.state = {
             lat: 43.614226,
             lng: 3.876563,
-            zoom: 13,
+            zoom: 15,
         }
     }
 
     render() {
+        console.log(this.props.places)
         const position = [this.state.lat, this.state.lng]
         return (
             <Map
@@ -24,22 +25,36 @@ class CustomMap extends React.Component {
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
                 />
-                <Marker position={position}>
-                    <Popup>
-                        <span>
-                            A pretty CSS3 popup. <br /> Easily customizable.
-                        </span>
-                    </Popup>
-                </Marker>
+                {this.props.places &&
+                    this.props.places.map(
+                        ({ id, name, description, localization }) => (
+                            <Marker
+                                key={id}
+                                position={[
+                                    localization.latitude,
+                                    localization.longitude,
+                                ]}
+                            >
+                                <Popup>
+                                    <span>
+                                        {name}
+                                        <br />
+                                        {description}
+                                    </span>
+                                </Popup>
+                            </Marker>
+                        )
+                    )}
             </Map>
         )
     }
 }
 
 const mapStateToProps = state => {
-    console.log(state && state.data && state.data.faqs)
+    //console.log(state && state.data && state.data.places)
+    const places = state && state.data && state.data.places
     return {
-        state,
+        places: places,
     }
 }
 

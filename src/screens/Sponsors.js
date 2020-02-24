@@ -18,17 +18,26 @@ const ListItemWrapper = styled.a`
 
 const ListItem = ({ id, name, description, url, image }) => {
     const filename = image && image.fileName
-    const imageSrc = require(`../assets/images/sponsors/${filename}`)
+    const imageSrc = image && require(`../assets/images/sponsors/${filename}`)
     return (
         <ListItemWrapper href={url}>
             <div
                 style={{
+                    display: 'flex',
+                    justifyContent: 'center',
                     flex: 1,
                     height: '50px',
                     overflow: 'hidden',
                 }}
             >
-                <Image src={imageSrc} type="small"></Image>
+                <Image
+                    src={
+                        imageSrc
+                            ? imageSrc
+                            : require('../assets/images/none.png')
+                    }
+                    type="small"
+                ></Image>
             </div>
             <Text
                 style={{

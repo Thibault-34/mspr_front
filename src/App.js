@@ -22,16 +22,17 @@ import styled from 'styled-components'
 import { BACKGROUND_COLOR } from './constants/theme'
 
 import { fetchDataWithRedux } from './redux/actions'
+import Image from './components/Image'
 
 const Nav = styled.nav`
-    width: 100%;
+    width: 80%;
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: purple;
-    opacity: 0.3;
+    opacity: 0.8;
     position: absolute;
     top: 0;
     z-index: 1;
@@ -40,6 +41,7 @@ const Nav = styled.nav`
 const MenuLink = styled(Link)`
     color: white;
     font-weight: bold;
+    margin: 5px 0;
     text-decoration: ${({ to }) =>
         to === useLocation().pathname ? 'underline' : 'none'};
 `
@@ -102,6 +104,33 @@ class App extends React.Component {
                         <MenuLink to="/faq">FAQ</MenuLink>
                         <MenuLink to="/sponsors">Partenaires</MenuLink>
                         <MenuLink to="/infos">Informations générales</MenuLink>
+                        <div
+                            style={{
+                                display: 'flex',
+                                flexDirection: 'row',
+                                marginTop: '20px',
+                                justifyContent: 'space-between',
+                            }}
+                        >
+                            <a href="https://facebook.fr">
+                                <Image
+                                    style={{ padding: '5px' }}
+                                    src={require('./assets/images/icons/facebook.png')}
+                                ></Image>
+                            </a>
+                            <a href="https://instagram.fr">
+                                <Image
+                                    style={{ padding: '5px' }}
+                                    src={require('./assets/images/icons/instagram.png')}
+                                ></Image>
+                            </a>
+                            <a href="https://twitter.fr">
+                                <Image
+                                    style={{ padding: '5px' }}
+                                    src={require('./assets/images/icons/twitter.png')}
+                                ></Image>
+                            </a>
+                        </div>
                     </Nav>
                 )}
 
