@@ -95,10 +95,9 @@ class App extends React.Component {
 
                 {isNavDisplayed && (
                     <Nav>
-                        <MenuLink to="/">Home</MenuLink>
+                        <MenuLink to="/">Programme</MenuLink>
                         <MenuLink to="/map">Map</MenuLink>
                         <MenuLink to="/news">News</MenuLink>
-                        <MenuLink to="/events">Events</MenuLink>
                         <MenuLink to="/ticket">Ticket</MenuLink>
                         <MenuLink to="/artists">Artists</MenuLink>
                         <MenuLink to="/faq">FAQ</MenuLink>
